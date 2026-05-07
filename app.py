@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import joblib
+import os
+
 from feature_extraction import extract_features
 from utils.rules import detect_attack_type
 
@@ -26,7 +28,6 @@ def predict():
 
     if rule_result:
         result = f"{rule_result} Attack Detected"
-
     else:
         # STEP 2: ML MODEL CHECK
         features = extract_features(url)
@@ -40,6 +41,7 @@ def predict():
     return render_template('index.html', prediction=result)
 
 
-# RUN APP
-if __name__ == '__main__':
-    app.run(debug=True)
+# RUN APP (RENDER FIX)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
