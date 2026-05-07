@@ -1,0 +1,7 @@
+url,label
+https://google.com,0
+https://amazon.com,0
+http://facebook.com,0
+http://fake-bank.xyz,1
+http://login-secure-paypal.xyz,1
+http://192.168.1.1/login@phish.com,1

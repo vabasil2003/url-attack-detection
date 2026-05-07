@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Attack Detection</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 60px;
+            font-size: 40px;
+        }
+
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            width: 400px;
+            margin: 50px auto;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #ff4b2b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff416c;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .safe {
+            color: #00ffcc;
+        }
+
+        .malicious {
+            color: #ff4b2b;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🔐 URL Attack Detection System</h1>
+
+<div class="container">
+
+    <form action="/predict" method="post">
+        <input type="text" name="url" placeholder="Enter URL here..." required>
+        <br>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result 
+            {% if 'Safe' in prediction %}safe{% else %}malicious{% endif %}">
+            {{ prediction }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
